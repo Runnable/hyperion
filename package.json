@@ -1,0 +1,28 @@
+{
+  "name": "hyperion",
+  "version": "0.0.0",
+  "description": "HYPERION ========",
+  "main": "index.js",
+  "engines": {
+    "node": "~4.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodeNow/hyperion.git"
+  },
+  "author": "Casey Flynn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CodeNow/hyperion/issues"
+  },
+  "homepage": "https://github.com/CodeNow/hyperion",
+  "devDependencies": {
+    "code": "^1.5.0",
+    "jshint": "^2.8.0",
+    "lab": "^6.2.0",
+    "sinon": "^1.17.1"
+  }
+}
