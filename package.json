@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "101": "^1.2.0",
+    "body-parser": "^1.14.1",
     "bunyan": "^1.5.1",
     "express": "^4.13.3",
     "loadenv": "^2.0.1",
