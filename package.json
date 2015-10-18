@@ -7,7 +7,9 @@
     "node": "~4.2.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "jshint",
+    "test": "npm run lint; NODE_PATH=./server/lib lab -c -v",
+    "test-cov": "rm coverage/coverage.html; NODE_PATH=./server/lib lab -c -r html > coverage/coverage.html; open -a 'Google Chrome' coverage/coverage.html"
   },
   "repository": {
     "type": "git",
