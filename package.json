@@ -26,6 +26,7 @@
     "sinon": "^1.17.1"
   },
   "dependencies": {
+    "101": "^1.2.0",
     "bunyan": "^1.5.1",
     "express": "^4.13.3",
     "loadenv": "^2.0.1"
