@@ -5,11 +5,11 @@
 'use strict';
 
 var express = require('express');
-var app = module.exports = express();
 
 var log = require('logger')(__filename);
 
-var exports = module.exports;
+var app = express();
+var exports = module.exports = app;
 
 exports._expressListenCallback = (err) => {
   if (err) {
@@ -20,4 +20,6 @@ exports._expressListenCallback = (err) => {
   log.trace('_expressListenCallback success PORT: '+process.env.PORT);
 };
 
-app.listen(process.env.PORT, exports._expressListenCallback);
+
+
+exports.listen(process.env.PORT, exports._expressListenCallback);
