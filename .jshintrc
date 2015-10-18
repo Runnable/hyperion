@@ -53,5 +53,7 @@
     "maxdepth"      : 2,
     "maxstatements" : 50,
     "maxcomplexity" : 5,
-    "maxlen"        : 100
+    "maxlen"        : 100,
+
+    "esnext": true
 }
