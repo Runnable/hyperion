@@ -5,6 +5,7 @@
 'use strict';
 
 var express = require('express');
+var mongoose = require('mongoose');
 
 var log = require('logger')(__filename);
 var routes = require('routes/routes');
@@ -24,13 +25,23 @@ exports._expressListenCallback = (port, err) => {
 };
 
 /**
+ * @param {String} connectionUrl
+ */
+exports._initializeMongoose = (connectionUrl) => {
+  //new Promise()
+  mongoose.connect(connectionUrl); //TODO: Add logic to block until connection completes
+};
+
+/**
  * Initialize application.
  *   - Initialize sequences
  *   - Bind routes
  *   - Start express server
  */
 exports.start = (opts) => {
+  //new Promise()
   sequences.initialize(opts.sequences);
+  exports._initializeMongoose();
   routes.initialize(app);
   exports.listen(opts.port, exports._expressListenCallback.bind(this, opts.port));
 };
