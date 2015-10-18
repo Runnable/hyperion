@@ -8,8 +8,8 @@
   },
   "scripts": {
     "lint": "jshint",
-    "test": "npm run lint; NODE_PATH=./server/lib lab -c -v server/",
-    "test-cov": "rm coverage/coverage.html; NODE_PATH=./server/lib lab -c -r html server/ > coverage/coverage.html; open -a 'Google Chrome' coverage/coverage.html"
+    "test": "npm run lint; NODE_PATH=./server/lib lab -c -v",
+    "test-cov": "rm coverage/coverage.html; NODE_PATH=./server/lib lab -c -r html > coverage/coverage.html; open -a 'Google Chrome' coverage/coverage.html"
   },
   "repository": {
     "type": "git",
@@ -22,14 +22,9 @@
   },
   "homepage": "https://github.com/CodeNow/hyperion",
   "devDependencies": {
-    "chai": "^3.3.0",
     "code": "^1.5.0",
-    "istanbul": "^0.4.0",
     "jshint": "^2.8.0",
     "lab": "^6.2.0",
-    "mocha": "^2.3.3",
-    "rewire": "^2.3.4",
-    "sandboxed-module": "^2.0.3",
     "sinon": "^1.17.1"
   },
   "dependencies": {
