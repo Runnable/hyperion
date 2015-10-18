@@ -36,12 +36,17 @@ describe('server/server', function () {
 
   it('should log connection error', function (done) {
     server._expressListenCallback();
+    expect(ctx.log.error.callCount).to.equal(0);
+    expect(ctx.log.trace.callCount).to.equal(1);
     done();
   });
 
   it('should log connection success', function (done) {
-    server._expressListenCallback(new Error());
-    sinon.assert.calledOnce(ctx.log.error);
+    var error = new Error();
+    server._expressListenCallback(error);
+    expect(ctx.log.error.args[0][0].err).to.equal(error);
+    expect(ctx.log.error.callCount).to.equal(1);
+    expect(ctx.log.trace.callCount).to.equal(0);
     done();
   });
 });
