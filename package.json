@@ -24,5 +24,10 @@
     "jshint": "^2.8.0",
     "lab": "^6.2.0",
     "sinon": "^1.17.1"
+  },
+  "dependencies": {
+    "bunyan": "^1.5.1",
+    "express": "^4.13.3",
+    "loadenv": "^2.0.1"
   }
 }
