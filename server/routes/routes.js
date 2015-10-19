@@ -7,8 +7,8 @@
 var hasKeypaths = require('101/has-keypaths');
 var pick = require('101/pick');
 
-var errors = require('errors');
-var log = require('logger')(__filename);
+var errors = require('lib/errors');
+var log = require('lib/logger')(__filename);
 var sequences = require('models/sequences');
 
 var exports = module.exports;

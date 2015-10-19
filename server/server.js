@@ -7,8 +7,9 @@
 var bodyParser = require('body-parser');
 var express = require('express');
 var mongoose = require('mongoose');
+var path = require('path');
 
-var log = require('logger')(__filename);
+var log = require('lib/logger')(__filename);
 var routes = require('routes/routes');
 var sequences = require('models/sequences');
 
