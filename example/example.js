@@ -10,6 +10,7 @@ var Hyperion = require('../index');
 
 var hyperion = new Hyperion({
   port: 3000,
+  db: 'mongodb://localhost/hyperion',
   sequences: {
     'build-system': {
       checkpoints: [{
