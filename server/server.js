@@ -38,6 +38,7 @@ exports._initializeMongoose = (connectionUrl) => {
  */
 exports._initializeMiddleware = (app) => {
   app.use(bodyParser.json());
+  app.use('/static', express.static(path.join(__dirname, '../client/build/')));
   app.use((req, res, next) => {
     // initialize middleware shared data namespace
     req.runnableData = {};
