@@ -26,7 +26,6 @@ exports._expressListenCallback = (port, err) => {
 };
 
 /**
- * @param {String} connectionUrl
  */
 exports._initializeMongoose = (connectionUrl) => {
   //new Promise()
@@ -54,7 +53,7 @@ exports._initializeMiddleware = (app) => {
 exports.start = (opts) => {
   //new Promise()
   sequences.initialize(opts.sequences);
-  exports._initializeMongoose();
+  exports._initializeMongoose(opts.db);
   exports._initializeMiddleware(app);
   routes.initialize(app);
   exports.listen(opts.port, exports._expressListenCallback.bind(this, opts.port));

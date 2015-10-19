@@ -14,7 +14,7 @@ var sequenceSchema = mongoose.Schema({
       unique: true
     }
   },
-  checkpoints: [Object]
+  checkpoints: [{}]
 });
 
 module.exports = mongoose.model('Sequence', sequenceSchema);
