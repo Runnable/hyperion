@@ -57,6 +57,12 @@ exports._postSequences = [
   exports._createNewSequence,
   (req, res) => {
     res.send(201);
+  },
+  (err, req, res, next) => {
+    if (err.code === 11000) {
+      return res.status(409).send();
+    }
+    res.status(500).send();
   }
 ];
 
