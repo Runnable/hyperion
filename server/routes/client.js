@@ -3,9 +3,15 @@
  */
 'use strict';
 
-var log = require('logger')(__filename);
+var path = require('path');
+
+var log = require('lib/logger')(__filename);
 
 var exports = module.exports;
+
+exports._getIndex = (req, res) => {
+  res.sendFile(path.join(__dirname, '../templates/layout.html'));
+};
 
 var _routes = exports._routes = [
   ['get', '/', exports._getIndex]
