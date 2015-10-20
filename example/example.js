@@ -1,7 +1,7 @@
 /**
  * Example initialization of Hyperion
  *
- * NODE_PATH=./server/lib node ./example.js
+ * NODE_PATH=./server node ./example.js
  * @module example/example
  */
 'use strict';
