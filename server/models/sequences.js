@@ -17,11 +17,11 @@ exports.initialize = (sequencesSpecifications) => {
 
 /**
  * Return sequence from hash of registered sequences
- * @param {sequence} string
+ * @param {String} sequenceName string
  * @return {Object}
  */
-exports.getSequenceSpecification = (sequence) => {
-  return _sequencesSpecifications[sequence];
+exports.getSequenceSpecification = (sequenceName) => {
+  return _sequencesSpecifications[sequenceName];
 };
 
 /**

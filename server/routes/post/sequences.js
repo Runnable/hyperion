@@ -4,8 +4,10 @@
 'use strict';
 
 var hasKeypaths = require('101/has-keypaths');
+var last = require('101/last');
 var pick = require('101/pick');
 
+var alerts = require('models/alerts');
 var errors = require('lib/errors');
 var log = require('lib/logger')(__filename);
 var sequences = require('models/sequences');
@@ -45,6 +47,15 @@ exports._createNewSequence = (req, res, next) => {
 };
 
 /**
+ *
+ */
+exports._initializeCheckpointAlert = (req, res, next) => {
+  var s = req.runnableData.sequence;
+  alerts.createAlert(s.name, s.uuid, last(s.checkpoints).name);
+  next();
+};
+
+/**
  * POST /sequences
  */
 exports._postSequences = [
@@ -55,14 +66,17 @@ exports._postSequences = [
      */
   exports._postSequencesInitialValidation,
   exports._createNewSequence,
+  exports._initializeAlertCountdown,
   (req, res) => {
     res.send(201);
   },
   (err, req, res, next) => {
     if (err.code === 11000) {
-      return res.status(409).send();
+      res.status(409).send();
+      return next();
     }
     res.status(500).send();
+    next();
   }
 ];
 
