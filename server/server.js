@@ -9,9 +9,10 @@ var express = require('express');
 var mongoose = require('mongoose');
 var path = require('path');
 
-var clientRoutes = require('routes/client');
 var log = require('lib/logger')(__filename);
 var routes = require('routes/routes');
+var routesClient = require('routes/client');
+var routesSequences = require('routes/post/sequences');
 var sequences = require('models/sequences');
 
 var app = express();
@@ -58,7 +59,10 @@ exports.start = (opts) => {
   sequences.initialize(opts.sequences);
   exports._initializeMongoose(opts.db);
   exports._initializeMiddleware(app);
+
   routes.initialize(app);
-  clientRoutes.initialize(app);
+  routesClient.initialize(app);
+  routesSequences.initialize(app);
+
   exports.listen(opts.port, exports._expressListenCallback.bind(this, opts.port));
 };
