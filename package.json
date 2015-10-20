@@ -29,10 +29,20 @@
   },
   "dependencies": {
     "101": "^1.2.0",
+    "angular": "^1.4.7",
+    "async": "^1.4.2",
     "body-parser": "^1.14.1",
     "bunyan": "^1.5.1",
     "express": "^4.13.3",
+    "find": "^0.2.3",
+    "grunt": "^0.4.5",
+    "grunt-browserify": "^4.0.1",
+    "grunt-jade-plugin": "^0.6.0",
     "loadenv": "^2.0.1",
     "mongoose": "^4.1.11"
+  },
+  "browser": {
+    "app": ".client/app.js",
+    "main": "./client/main.js"
   }
 }
