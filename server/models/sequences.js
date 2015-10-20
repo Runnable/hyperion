@@ -34,7 +34,7 @@ exports.getSequenceSpecification = (sequence) => {
 exports.createSequence = (opts, cb) => {
   var checkpoint0 = _sequencesSpecifications[opts.name].checkpoints[0];
   var sequence = new Sequence(opts);
-  sequence.checkpoints.push({name: 'foo'}); //= [checkpoint0];
+  sequence.checkpoints = [checkpoint0];
   sequence.save((err) => {
     //TODO: log instrument
     if (err) {
