@@ -38,6 +38,7 @@
     "grunt": "^0.4.5",
     "grunt-browserify": "^4.0.1",
     "grunt-jade-plugin": "^0.6.0",
+    "keypather": "^1.10.1",
     "loadenv": "^2.0.1",
     "mongoose": "^4.1.11"
   },
