@@ -9,6 +9,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var path = require('path');
 
+var clientRoutes = require('routes/client');
 var log = require('lib/logger')(__filename);
 var routes = require('routes/routes');
 var sequences = require('models/sequences');
@@ -38,7 +39,7 @@ exports._initializeMongoose = (connectionUrl) => {
  */
 exports._initializeMiddleware = (app) => {
   app.use(bodyParser.json());
-  app.use('/static', express.static(path.join(__dirname, '../client/build/')));
+  app.use('/build', express.static(path.join(__dirname, '../client/build/')));
   app.use((req, res, next) => {
     // initialize middleware shared data namespace
     req.runnableData = {};
@@ -58,5 +59,6 @@ exports.start = (opts) => {
   exports._initializeMongoose(opts.db);
   exports._initializeMiddleware(app);
   routes.initialize(app);
+  clientRoutes.initialize(app);
   exports.listen(opts.port, exports._expressListenCallback.bind(this, opts.port));
 };
