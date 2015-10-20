@@ -55,5 +55,9 @@
     "maxcomplexity" : 5,
     "maxlen"        : 100,
 
-    "esnext": true
+    "esnext": true,
+    "predef": [
+      "angular",
+      "document"
+    ]
 }
