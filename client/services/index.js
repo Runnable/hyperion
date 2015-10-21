@@ -1,1 +1,1 @@
-require('./socket.io');
+require('./socket');
