@@ -3,15 +3,15 @@
  */
 'use strict';
 
-//require('app');
-//require('angular');
+require('./app');
+require('angular');
 
 /**
  * Each 'index' generated via grunt process dynamically includes all browserify common-js modules
  * in js bundle
  */
-//require('./controllers/index');
-//require('./services/index');
+require('./controllers/index');
+require('./services/index');
 //require('router');
 
 /**
