@@ -87,8 +87,8 @@ exports._postSequencesCheckpoint = [
 ];
 
 var _routes = exports._routes = [
-  ['post', '/sequences', exports._postSequences],
-  ['post', '/sequences/checkpoint', exports._postSequencesCheckpoint]
+  //['post', '/sequences', exports._postSequences],
+  //['post', '/sequences/checkpoint', exports._postSequencesCheckpoint]
 ];
 
 /**
