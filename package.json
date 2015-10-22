@@ -30,6 +30,7 @@
   "dependencies": {
     "101": "^1.2.0",
     "angular": "^1.4.7",
+    "angular-route": "^1.4.7",
     "async": "^1.4.2",
     "body-parser": "^1.14.1",
     "bunyan": "^1.5.1",
