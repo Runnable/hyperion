@@ -5,6 +5,7 @@
 'use strict';
 
 var log = require('lib/logger')(__filename);
+var app = require('app');
 
 var exports = module.exports;
 
@@ -27,7 +28,7 @@ var _routes = exports._routes = [
  * Bind route middlewares to request paths
  * @param {Object} app instance of express
  */
-exports.initialize = (app) => {
+exports.initialize = () => {
   _routes.forEach((route) => {
     log.trace([
       'Route loaded:',

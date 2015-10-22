@@ -5,6 +5,7 @@
 
 var path = require('path');
 
+var app = require('app');
 var log = require('lib/logger')(__filename);
 
 var exports = module.exports;
@@ -17,7 +18,7 @@ var _routes = exports._routes = [
   ['get', '/', exports._getIndex]
 ];
 
-exports.initialize = (app) => {
+exports.initialize = () => {
   _routes.forEach((route) => {
     log.trace([
       'Route loaded:',

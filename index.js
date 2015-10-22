@@ -3,7 +3,7 @@
  */
 'use strict';
 
-var server = require('./server/server');
+var main = require('./server/main');
 
 /**
  * @class
@@ -18,7 +18,7 @@ function Hyperion (opts) {
  * listen for incoming requests
  */
 Hyperion.prototype.start = function () {
-  server.start(this._opts);
+  main.start(this._opts);
 };
 
 module.exports = Hyperion;

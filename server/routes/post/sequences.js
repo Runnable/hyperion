@@ -8,6 +8,7 @@ var last = require('101/last');
 var pick = require('101/pick');
 
 var alerts = require('models/alerts');
+var app = require('app');
 var errors = require('lib/errors');
 var log = require('lib/logger')(__filename);
 var sequences = require('models/sequences');
@@ -95,7 +96,7 @@ var _routes = exports._routes = [
  * Bind route middlewares to request paths
  * @param {Object} app instance of express
  */
-exports.initialize = (app) => {
+exports.initialize = () => {
   _routes.forEach((route) => {
     log.trace([
       'Route loaded:',
