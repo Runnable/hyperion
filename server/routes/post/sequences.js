@@ -11,6 +11,7 @@ var alerts = require('models/alerts');
 var app = require('app');
 var errors = require('lib/errors');
 var log = require('lib/logger')(__filename);
+var messenger = require('lib/messenger');
 var sequences = require('models/sequences');
 
 var exports = module.exports;
@@ -57,6 +58,15 @@ exports._initializeCheckpointAlert = (req, res, next) => {
 };
 
 /**
+ *
+ */
+exports._emitPostSequences = (req, res, next) => {
+  var s = req.runnableData.sequence;
+  messenger.emitPostSequences(s.name, s.uuid);
+  next();
+};
+
+/**
  * POST /sequences
  */
 exports._postSequences = [
@@ -67,7 +77,8 @@ exports._postSequences = [
      */
   exports._postSequencesInitialValidation,
   exports._createNewSequence,
-  exports._initializeAlertCountdown,
+  exports._initializeCheckpointAlert,
+  exports._emitPostSequences,
   (req, res) => {
     res.send(201);
   },
@@ -88,7 +99,7 @@ exports._postSequencesCheckpoint = [
 ];
 
 var _routes = exports._routes = [
-  //['post', '/sequences', exports._postSequences],
+  ['post', '/sequences', exports._postSequences],
   //['post', '/sequences/checkpoint', exports._postSequencesCheckpoint]
 ];
 
