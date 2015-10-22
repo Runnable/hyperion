@@ -19,6 +19,10 @@ socket.on('data', function (data) {
   console.log('data received', data);
 });
 
+socket.on('postSequence', function (data) {
+  console.log('postSequence: ', data);
+});
+
 //require('router');
 
 /**
