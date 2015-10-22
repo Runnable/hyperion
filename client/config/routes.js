@@ -4,15 +4,15 @@
 'use strict';
 
 module.exports = [{
-  url: '^/',
-  templateUrl: 'viewIndex',
-  controller: 'controllerIndex'
+  url: '/',
+  templateUrl: 'viewHome',
+  controller: 'controllerHome'
 }, {
-  url: '^/:sequenceName',
+  url: '/:sequenceName',
   templateUrl: 'viewSequences',
   controller: 'controllerSequences'
 }, {
-  url: '^/:sequenceName/:sequenceUuid',
+  url: '/:sequenceName/:sequenceUuid',
   templateUrl: 'viewSequence',
   controller: 'controllerSequence'
 }];
