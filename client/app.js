@@ -4,5 +4,6 @@
 'use strict';
 
 require('angular');
+var ngRoute = require('angular-route');
 
-module.exports = angular.module('app', []);
+module.exports = angular.module('app', [ngRoute]);
