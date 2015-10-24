@@ -13,6 +13,11 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     browserify: {
       build: {
+        options: {
+          browserifyOptions: {
+            paths: ['./client/']
+          }
+        },
         files: {
           'client/build/js/bundle.js': 'client/main.js'
         }
