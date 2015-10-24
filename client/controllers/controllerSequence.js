@@ -3,7 +3,7 @@
  */
 'use strict';
 
-require('../app')
+require('app')
   .controller('controllerSequence', controllerSequence);
 
 function controllerSequence (
