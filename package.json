@@ -43,9 +43,5 @@
     "loadenv": "^2.0.1",
     "mongoose": "^4.1.11",
     "socket.io": "^1.3.7"
-  },
-  "browser": {
-    "app": "./client/app.js",
-    "main": "./client/main.js"
   }
 }
