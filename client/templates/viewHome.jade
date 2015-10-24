@@ -1,0 +1,10 @@
+// Display list of all sequence types
+
+table
+  tr(
+    ng-repeat = "(key, value) in data.sequenceTypes"
+  )
+    td
+      a(
+        ng-href = "#/{{ key }}"
+      ) {{ key }}

@@ -11,18 +11,15 @@ function controllerHome (
   $scope,
   socket
 ) {
-
-  console.log('controllerHome');
+  var data = $scope.data = {};
 
   socket.on('postSequence', function (data) {
     console.log('postSequence: ', data);
   });
 
   $http.get('/api/sequences')
-  .then(function success (response) {
-    console.log('success', response);
-  }, function failure (response) {
-    console.log('failure', response);
+  .then(function success (res) {
+    data.sequenceTypes = res.data;
+  }, function failure (res) {
   });
-
 }
