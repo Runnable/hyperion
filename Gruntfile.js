@@ -15,6 +15,7 @@ module.exports = function (grunt) {
       build: {
         options: {
           browserifyOptions: {
+            debug: true,
             paths: ['./client/']
           }
         },
