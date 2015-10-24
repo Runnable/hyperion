@@ -4,7 +4,7 @@
 'use strict';
 
 var app = require('app');
-var routes = require('./config/routes');
+var routes = require('config/routes');
 
 app.config([
   '$routeProvider',
