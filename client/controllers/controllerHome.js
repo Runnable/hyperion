@@ -7,10 +7,16 @@ require('../app')
   .controller('controllerHome', controllerHome);
 
 function controllerHome (
+  $http,
   $scope,
-  $http
+  socket
 ) {
+
   console.log('controllerHome');
+
+  socket.on('postSequence', function (data) {
+    console.log('postSequence: ', data);
+  });
 
   $http.get('/api/sequences')
   .then(function success (response) {
