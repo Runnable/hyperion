@@ -4,8 +4,8 @@
  */
 'use strict';
 
-var log = require('lib/logger')(__filename);
 var app = require('app');
+var log = require('lib/logger')(__filename);
 
 var exports = module.exports;
 
@@ -33,6 +33,6 @@ exports.initialize = () => {
     log.trace([
       'Route loaded:',
     ].concat(route).join(' '));
-    app[route[0]](route[1], route[2]);
+    app[route[0]]('/api'+route[1], route[2]);
   });
 };

@@ -79,8 +79,9 @@ exports._postSequences = [
   exports._createNewSequence,
   exports._initializeCheckpointAlert,
   exports._emitPostSequences,
-  (req, res) => {
+  (req, res, next) => {
     res.send(201);
+    next();
   },
   (err, req, res, next) => {
     if (err.code === 11000) {
@@ -112,6 +113,6 @@ exports.initialize = () => {
     log.trace([
       'Route loaded:',
     ].concat(route).join(' '));
-    app[route[0]](route[1], route[2]);
+    app[route[0]]('/api'+route[1], route[2]);
   });
 };
