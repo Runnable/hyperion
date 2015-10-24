@@ -13,7 +13,8 @@ var app = require('app');
 var log = require('lib/logger')(__filename);
 var routes = require('routes/routes');
 var routesClient = require('routes/client');
-var routesSequences = require('routes/post/sequences');
+var routesGetSequences = require('routes/get/sequences');
+var routesPostSequences = require('routes/post/sequences');
 var sequences = require('models/sequences');
 var server = require('server');
 
@@ -70,7 +71,8 @@ exports.start = (opts) => {
 
   routes.initialize();
   routesClient.initialize();
-  routesSequences.initialize();
+  routesGetSequences.initialize();
+  routesPostSequences.initialize();
 
   server.listen(opts.port, exports._expressListenCallback.bind(this, opts.port));
 };
