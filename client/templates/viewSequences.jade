@@ -1,0 +1,14 @@
+// Display list of all sequences of a given sequence type
+
+table
+  th
+    tr
+      td Name
+      td UUID
+      td Checkpoints
+  tr(
+    ng-repeat = "s in data.sequences"
+  )
+    td {{ s.name }}
+    td {{ s.uuid }}
+    td {{ s.checkpoints.length }}

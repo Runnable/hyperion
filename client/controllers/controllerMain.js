@@ -7,7 +7,8 @@ require('app')
   .controller('controllerMain', controllerMain);
 
 function controllerMain (
-  $scope
 ) {
-  console.log('controllerMain');
+  /**
+   * Placeholder controller
+   */
 }
