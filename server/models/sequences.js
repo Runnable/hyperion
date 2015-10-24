@@ -3,6 +3,8 @@
  */
 'use strict';
 
+var put = require('101/put');
+
 var Sequence = require('models/mongo/sequence');
 
 var exports = module.exports;
@@ -16,12 +18,28 @@ exports.initialize = (sequencesSpecifications) => {
 };
 
 /**
+ * Return sequence types and specifications
+ * @return {Object}
+ */
+exports.getSequences = () => {
+  // return copy
+  return put({}, _sequencesSpecifications);
+};
+
+/**
  * Return sequence from hash of registered sequences
  * @param {String} sequenceName string
  * @return {Object}
  */
 exports.getSequenceSpecification = (sequenceName) => {
   return _sequencesSpecifications[sequenceName];
+};
+
+/**
+ *
+ */
+exports.getSequenceDocuments = (sequenceName, cb) => {
+  Sequence.find({name: sequenceName}, cb);
 };
 
 /**
