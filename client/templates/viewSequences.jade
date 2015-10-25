@@ -10,5 +10,8 @@ table
     ng-repeat = "s in data.sequences"
   )
     td {{ s.name }}
-    td {{ s.uuid }}
-    td {{ s.checkpoints.length }}
+    td
+      a(
+        ng-href = "#/{{ data.sequenceName }}/{{ s.uuid }}"
+      ) {{ s.uuid }}
+    td {{ s.checkpoints.length }} / {{ data.specCheckpoints.length }}

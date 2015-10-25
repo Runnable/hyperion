@@ -9,14 +9,33 @@ require('app')
 function controllerSequences (
   $http,
   $routeParams,
-  $scope
+  $scope,
+  socket
 ) {
   var data = $scope.data = {};
 
-  $http.get('/api/sequences/'+$routeParams.sequenceName)
+  data.sequenceName = $routeParams.sequenceName;
+
+  socket.on('postSequence', function () {
+    fetchSequences();
+  });
+
+  $http.get('/api/sequences')
     .then(function success (res) {
-      data.sequences = res.data;
+      data.sequencesSpecifications = res.data;
+      data.specCheckpoints = res.data[$routeParams.sequenceName].checkpoints;
     },
     function failure (res) {
     });
+
+  function fetchSequences () {
+    $http.get('/api/sequences/'+$routeParams.sequenceName)
+      .then(function success (res) {
+        data.sequences = res.data;
+      },
+      function failure (res) {
+      });
+  }
+
+  fetchSequences();
 }
