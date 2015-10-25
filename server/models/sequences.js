@@ -3,6 +3,7 @@
  */
 'use strict';
 
+var find = require('101/find');
 var isFunction = require('101/is-function');
 var put = require('101/put');
 
@@ -69,5 +70,32 @@ exports.createSequence = (opts, cb) => {
       return cb(err);
     }
     cb(null, sequence);
+  });
+};
+
+/**
+ *
+ */
+exports.createSequenceCheckpoint = (opts, cb) => {
+  Sequence.findOne({
+    uuid: opts.uuid
+  }, (err, sequence) => {
+    if (err) { return cb(err); }
+    if (!sequence) { return cb(new Error('Sequence not found')); }
+    var sequenceSpec = exports.getSequenceSpecification(sequence.name);
+    var checkpointSpec = find(sequenceSpec.checkpoints, (checkpoint) => {
+      return checkpoint.name === opts.name;
+    });
+    if (!checkpointSpec) {
+      return cb(new Error('Invalid checkpoint name'));
+    }
+    var alreadyExists = find(sequence.checkpoints, (checkpoint) => {
+      return checkpoint.name === opts.name;
+    });
+    if (alreadyExists) {
+      return cb(new Error('Checkpoint already exists'));
+    }
+    sequence.checkpoints.push(checkpointSpec);
+    sequence.save(cb);
   });
 };

@@ -39,7 +39,7 @@ exports._postSequencesInitialValidation = (req, res, next) => {
  */
 exports._createNewSequence = (req, res, next) => {
   var opts = pick(req.body, ['name', 'uuid', 'meta']);
-  sequences.createSequence(opts, function (err, sequence) {
+  sequences.createSequence(opts, (err, sequence) => {
     if (err) {
       return next(err);
     }
@@ -64,6 +64,20 @@ exports._emitPostSequences = (req, res, next) => {
   var s = req.runnableData.sequence;
   messenger.emitPostSequences(s.name, s.uuid);
   next();
+};
+
+/**
+ *
+ */
+exports._createNewSequenceCheckpoint = (req, res, next) => {
+  var uuid = req.params.sequenceUuid;
+  var opts = pick(req.body, ['name']);
+  opts.uuid = uuid;
+  sequences.createSequenceCheckpoint(opts, (err, sequence) => {
+    if (err) { return next(err); }
+    req.runnableData.sequence = sequence;
+    next();
+  });
 };
 
 /**
@@ -97,11 +111,26 @@ exports._postSequences = [
  * POST /sequences/checkpoint
  */
 exports._postSequencesCheckpoint = [
+  //exports._postSequencesInitialValidation,
+  exports._createNewSequenceCheckpoint,
+  exports._emitPostSequences,
+  (req, res, next) => {
+    res.send(201);
+    next();
+  },
+  (err, req, res, next) => {
+    if (err.message) {
+      res.status(409).send(err.message);
+      return next();
+    }
+    res.status(500).send();
+    next();
+  }
 ];
 
 var _routes = exports._routes = [
   ['post', '/sequences', exports._postSequences],
-  //['post', '/sequences/checkpoint', exports._postSequencesCheckpoint]
+  ['post', '/sequences/:sequenceUuid/checkpoint', exports._postSequencesCheckpoint]
 ];
 
 /**

@@ -33,9 +33,7 @@ function controllerSequence (
   $http.get('/api/sequences')
     .then(function success (res) {
       data.sequencesSpecifications = res.data;
-      console.log(res.data, $routeParams.sequenceName);
       data.sequenceSpec = res.data[$routeParams.sequenceName];
-      console.log(data.sequenceSpec);
     },
     function failure (res) {
     });
