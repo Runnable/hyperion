@@ -4,17 +4,17 @@ a(
   href = "#/"
 ) Back to Sequence Types
 
+h1 {{ data.sequenceName }} Sequences
+
 table.table.table-striped
   th
     tr
-      td Name
       td UUID
       td Checkpoints
   tbody
     tr(
       ng-repeat = "s in data.sequences"
     )
-      td {{ s.name }}
       td
         a(
           ng-href = "#/{{ data.sequenceName }}/{{ s.uuid }}"
