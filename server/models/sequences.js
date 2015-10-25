@@ -3,6 +3,7 @@
  */
 'use strict';
 
+var isFunction = require('101/is-function');
 var put = require('101/put');
 
 var Sequence = require('models/mongo/sequence');
@@ -38,8 +39,17 @@ exports.getSequenceSpecification = (sequenceName) => {
 /**
  *
  */
-exports.getSequenceDocuments = (sequenceName, cb) => {
-  Sequence.find({name: sequenceName}, cb);
+exports.getSequenceDocuments = (sequenceName, sequenceUuid, cb) => {
+  var query = {
+    name: sequenceName
+  };
+  if (isFunction(sequenceUuid)) {
+    cb = sequenceUuid;
+    Sequence.find(query, cb);
+  } else {
+    query.uuid = sequenceUuid;
+    Sequence.findOne(query, cb);
+  }
 };
 
 /**
