@@ -12,12 +12,19 @@ require('app')
 function controllerSequence (
   $http,
   $routeParams,
-  $scope
+  $scope,
+  socket
 ) {
   var data = $scope.sequenceData = {};
 
   data.sequenceName = $routeParams.sequenceName;
   data.sequenceUUid = $routeParams.sequenceUuid;
+
+  socket.on('postSequence', function (data) {
+    if (data.uuid === $routeParams.sequenceUuid) {
+      fetchSequence();
+    }
+  });
 
   /**
    * Test if spec checkpoint is in list of reached checkpoints
@@ -38,10 +45,13 @@ function controllerSequence (
     function failure (res) {
     });
 
-  $http.get('/api/sequences/'+$routeParams.sequenceName+'/'+$routeParams.sequenceUuid)
-    .then(function success (res) {
-      data.sequence = res.data;
-    },
-    function failure (res) {
-    });
+  function fetchSequence () {
+    $http.get('/api/sequences/'+$routeParams.sequenceName+'/'+$routeParams.sequenceUuid)
+      .then(function success (res) {
+        data.sequence = res.data;
+      },
+      function failure (res) {
+      });
+  }
+  fetchSequence();
 }
