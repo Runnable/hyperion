@@ -7,6 +7,10 @@ var mongoose = require('mongoose');
 
 var sequenceSchema = mongoose.Schema({
   name: String,
+  date: {
+    type: Date,
+    default: Date.now
+  },
   meta: Object,
   uuid: {
     type: String,

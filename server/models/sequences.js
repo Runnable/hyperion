@@ -46,7 +46,7 @@ exports.getSequenceDocuments = (sequenceName, sequenceUuid, cb) => {
   };
   if (isFunction(sequenceUuid)) {
     cb = sequenceUuid;
-    Sequence.find(query, cb);
+    Sequence.find(query).sort({date: -1}).exec(cb);
   } else {
     query.uuid = sequenceUuid;
     Sequence.findOne(query, cb);
