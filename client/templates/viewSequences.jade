@@ -6,12 +6,13 @@ table
       td Name
       td UUID
       td Checkpoints
-  tr(
-    ng-repeat = "s in data.sequences"
-  )
-    td {{ s.name }}
-    td
-      a(
-        ng-href = "#/{{ data.sequenceName }}/{{ s.uuid }}"
-      ) {{ s.uuid }}
-    td {{ s.checkpoints.length }} / {{ data.specCheckpoints.length }}
+  tbody
+    tr(
+      ng-repeat = "s in data.sequences"
+    )
+      td {{ s.name }}
+      td
+        a(
+          ng-href = "#/{{ data.sequenceName }}/{{ s.uuid }}"
+        ) {{ s.uuid }}
+      td {{ s.checkpoints.length }} / {{ data.specCheckpoints.length }}

@@ -1,0 +1,16 @@
+// List all checkpoints for a sequence
+
+h1 {{ sequenceData.sequenceName }}
+h2 {{ sequenceData.sequnceUuid }}
+
+table
+  thead
+    tr
+      td Name
+      td Status
+  tbody
+    tr(
+      ng-repeat = "checkpoint in sequenceData.sequenceSpec.checkpoints"
+    )
+      td {{ checkpoint.name }}
+      td {{ sequenceData.checkpointComplete(checkpoint.name) ? 'YES' : 'NO' }}
