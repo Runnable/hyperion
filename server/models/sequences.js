@@ -34,7 +34,7 @@ exports.getSequences = () => {
  * @return {Object}
  */
 exports.getSequenceSpecification = (sequenceName) => {
-  return _sequencesSpecifications[sequenceName];
+  return put({}, _sequencesSpecifications[sequenceName]);
 };
 
 /**
@@ -62,6 +62,8 @@ exports.getSequenceDocuments = (sequenceName, sequenceUuid, cb) => {
  */
 exports.createSequence = (opts, cb) => {
   var checkpoint0 = _sequencesSpecifications[opts.name].checkpoints[0];
+  opts.date = new Date();
+  checkpoint0.date = new Date();
   var sequence = new Sequence(opts);
   sequence.checkpoints = [checkpoint0];
   sequence.save((err) => {
@@ -95,6 +97,7 @@ exports.createSequenceCheckpoint = (opts, cb) => {
     if (alreadyExists) {
       return cb(new Error('Checkpoint already exists'));
     }
+    checkpointSpec.date = new Date();
     sequence.checkpoints.push(checkpointSpec);
     sequence.save(cb);
   });
