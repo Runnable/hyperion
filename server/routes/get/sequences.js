@@ -27,9 +27,24 @@ exports._getSequences = [
   }
 ];
 
+exports._getSequence = [
+  (req, res, next) => {
+    sequences.getSequenceDocuments(req.params.sequenceName, req.params.sequenceUuid,
+                                   (err, sequenceDocument) => {
+      if (err) { return next(err); }
+      if (!sequenceDocument) {
+        return next(new Error('Sequence not found'));
+      }
+      res.send(sequenceDocument);
+      next();
+    });
+  }
+];
+
 var _routes = exports._routes = [
   ['get', '/sequences', exports._getSequenceTypes],
   ['get', '/sequences/:sequenceName', exports._getSequences],
+  ['get', '/sequences/:sequenceName/:sequenceUuid', exports._getSequence]
 ];
 
 /**
