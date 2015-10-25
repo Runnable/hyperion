@@ -11,5 +11,5 @@ var server = require('server');
 var io = module.exports = socketIO(server);
 
 io.on('connection', function (socket) {
-  log.trace(socket, 'connection');
+  //log.trace(socket, 'connection');
 });
