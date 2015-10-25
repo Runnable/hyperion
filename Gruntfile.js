@@ -35,6 +35,15 @@ module.exports = function (grunt) {
           ]
         }
       }
+    },
+    copy: {
+      css: {
+        expand: true,
+        cwd: 'client/assets/css',
+        src: '**',
+        dest: 'client/build/css',
+        flatten: true
+      }
     }
   });
 
@@ -87,9 +96,11 @@ module.exports = function (grunt) {
   });
 
   grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-jade-plugin');
 
   grunt.registerTask('default', [
+    'copy:css',
     'jade2js',
     'autoBundleDependencies',
     'browserify:build'
