@@ -8,8 +8,8 @@
   },
   "scripts": {
     "lint": "jshint",
-    "test": "npm run lint; NODE_PATH=./server/lib lab -c -v server/",
-    "test-cov": "rm coverage/coverage.html; NODE_PATH=./server/lib lab -c -r html server/ > coverage/coverage.html; open -a 'Google Chrome' coverage/coverage.html"
+    "test": "npm run lint; NODE_PATH=./server lab -c -v server/",
+    "test-cov": "rm coverage/coverage.html; NODE_PATH=./server lab -c -r html server/ > coverage/coverage.html; open -a 'Google Chrome' coverage/coverage.html"
   },
   "repository": {
     "type": "git",
